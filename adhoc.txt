@@ -1,0 +1,3 @@
+ansible localhost -m copy -a "content='ansible is awesome!' dest=/etc/motd"
+ansible localhost -m lineinfile -a "line='ansible is awesome' path=/etc/motd create=yes"
+ansible localhost -m lineinfile -a "regexp='ansible is super' line='ansible is super awesome' path=/etc/motd create=yes"
