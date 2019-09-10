@@ -1,0 +1,13 @@
+---
+- name: Remove all partition
+  hosts: localhost
+  tasks:
+   - parted: device=/dev/vdb unit=MiB
+     register: vdb_info
+
+   - parted:
+       device: /dev/vdb
+       number: "{{ item.num }}"
+       state: absent
+     with_items:
+          - "{{ vdb_info.partitions }}"
